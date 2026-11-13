@@ -10,13 +10,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import lombok.Getter;
+import lombok.Setter;
 
 @MappedSuperclass
+@Getter 
+@Setter 
 public abstract class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    
+
     @Column(nullable = false, updatable = false)
     @jakarta.persistence.Temporal(jakarta.persistence.TemporalType.TIMESTAMP)
     private Date createdAt;

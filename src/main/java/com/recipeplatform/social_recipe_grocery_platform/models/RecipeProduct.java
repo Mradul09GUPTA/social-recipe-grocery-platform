@@ -26,7 +26,7 @@ public class RecipeProduct extends BaseModel {
     private GroceryProduct groceryProduct;
     private String unit;
     private BigDecimal quantity;
-    private boolean optional;
+    private boolean optional=false;
 
 
 }
