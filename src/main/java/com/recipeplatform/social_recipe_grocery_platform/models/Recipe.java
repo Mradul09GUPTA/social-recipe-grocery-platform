@@ -27,6 +27,8 @@ public class Recipe extends BaseModel {
     private int likeCount;
     @Column(nullable = false)
     private int commentCount;
+    @Column (nullable  =false)
+    private String recipeName;
     @OneToMany(mappedBy = "recipe",fetch = FetchType.LAZY)
     private List<RecipeProduct> products;
 

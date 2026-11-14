@@ -8,6 +8,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.recipeplatform.social_recipe_grocery_platform.dtos.ApiErrorResponse;
 import com.recipeplatform.social_recipe_grocery_platform.exceptions.GroceryProductNotFound;
+import com.recipeplatform.social_recipe_grocery_platform.exceptions.RecipeNotFoundException;
 import com.recipeplatform.social_recipe_grocery_platform.exceptions.UserNotFoundException;
 
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -50,7 +51,18 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
-
+    // Handle Recipts not found 
+    @ExceptionHandler (RecipeNotFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleRecipeNotFound(
+         RecipeNotFoundException ex, WebRequest request
+    ){ApiErrorResponse response = new ApiErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                "Not Found",
+                ex.getMessage(),
+                request.getDescription(false).replace("uri=", "")
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+    }
     // Handle DTO validation errors
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiErrorResponse> handleValidationErrors(

@@ -20,6 +20,8 @@ public class CreateRecipeRequest {
     private String description;
     @NotNull 
     private Long ownerId;
+    @NotBlank 
+    private String recipeName;
     @Valid 
     private List<RecipeProductRequest>products;
 }
