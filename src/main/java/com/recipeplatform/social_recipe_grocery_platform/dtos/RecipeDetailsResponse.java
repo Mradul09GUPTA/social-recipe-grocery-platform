@@ -17,4 +17,8 @@ public class RecipeDetailsResponse {
     private String ownerName;
 
     private List<RecipeProductResponse> products;
+
+    private List<RecipeIngredientResponse> ingredients;
+
+    private List<RecipeStepResponse> steps;
 }

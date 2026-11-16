@@ -1,5 +1,6 @@
 package com.recipeplatform.social_recipe_grocery_platform.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -31,6 +32,10 @@ public class Recipe extends BaseModel {
     private String recipeName;
     @OneToMany(mappedBy = "recipe",fetch = FetchType.LAZY)
     private List<RecipeProduct> products;
+    @OneToMany (mappedBy = "recipe",fetch = FetchType.LAZY)
+    private List<RecipeIngredient>recipeIngredients;
+    @OneToMany(mappedBy = "recipe", fetch = FetchType.LAZY)
+    private List<RecipeStep> steps ;
 
     @PrePersist
     private void onCreateRecipe() {

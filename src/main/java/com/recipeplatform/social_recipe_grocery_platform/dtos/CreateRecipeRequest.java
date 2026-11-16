@@ -1,27 +1,31 @@
 package com.recipeplatform.social_recipe_grocery_platform.dtos;
 
-
 import java.util.List;
-
-
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter 
-@Setter 
+@Getter
+@Setter
 public class CreateRecipeRequest {
-    @NotBlank 
+    @NotBlank
     private String imageUrl;
-    @NotBlank 
+    @NotBlank
     private String description;
-    @NotNull 
+    @NotNull
     private Long ownerId;
-    @NotBlank 
+    @NotBlank
     private String recipeName;
-    @Valid 
-    private List<RecipeProductRequest>products;
+    @Valid
+    private List<RecipeProductRequest> products;
+    @NotEmpty
+    @Valid
+    private List<RecipeIngredientRequest> ingredients;
+    @NotEmpty
+    @Valid
+    private List<RecipeStepRequest> steps;
 }
